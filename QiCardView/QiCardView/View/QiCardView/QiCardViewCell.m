@@ -70,8 +70,8 @@ static CGFloat const Qi_SpringVelocity = 0.8f;
         [self addSubview:_contentView];
     }
     self.contentView.clipsToBounds = YES;
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizer:)];
-    [self addGestureRecognizer:pan];
+    self.pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(panGestureRecognizer:)];
+    [self addGestureRecognizer:self.pan];
 }
 
 - (void)panGestureRecognizer:(UIPanGestureRecognizer*)pan {
@@ -225,6 +225,11 @@ static CGFloat const Qi_SpringVelocity = 0.8f;
     } completion:^(BOOL finished) {
         [snapshotView removeFromSuperview];
     }];
+}
+
+
+-(void)disableGesture {
+    [self removeGestureRecognizer:self.pan];
 }
 
 @end

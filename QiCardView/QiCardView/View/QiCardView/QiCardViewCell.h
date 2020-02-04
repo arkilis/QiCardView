@@ -34,6 +34,8 @@ typedef NS_ENUM(NSInteger,QiCardCellSwipeDirection) {
 @property (nonatomic, assign) CGFloat maxRemoveDistance;
 @property (nonatomic, weak) id<QiCardViewCellDelagate> cell_delegate;
 
+@property (nonatomic, strong) UIPanGestureRecognizer *pan;
+
 /*!
  @brief 初始化方法
  @param reuseIdentifier 复用id
@@ -46,5 +48,8 @@ typedef NS_ENUM(NSInteger,QiCardCellSwipeDirection) {
  @param direction 移除方向
  */
 - (void)removeFromSuperviewSwipe:(QiCardCellSwipeDirection)direction;
+
+
+-(void)disableGesture;
 
 @end

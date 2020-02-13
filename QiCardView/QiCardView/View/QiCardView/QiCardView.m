@@ -82,9 +82,10 @@ static int moveCount = 0;//!< 记录翻页次数
     
     NSInteger maxCount = [self.dataSource numberOfCountInCardView:self];
     NSInteger showNumber = MIN(maxCount, self.visibleCount);
-    for (int i = 0; i < showNumber; i++) {
-        [self createCardViewCellWithIndex:i];
-    }
+    [self createCardViewCellWithIndex:0];
+//    for (int i = 0; i < showNumber; i++) {
+//        [self createCardViewCellWithIndex:i];
+//    }
     [self updateLayoutVisibleCellsWithAnimated:animated];
 }
 
@@ -264,7 +265,7 @@ static int moveCount = 0;//!< 记录翻页次数
     
     NSInteger count = [self.dataSource numberOfCountInCardView:self];
     // 移除后的卡片是最后一张(没有更多)
-    if(self.visibleCells.count == 0) { // 只有最后一张卡片的时候
+    if(self.visibleCells.count == 0 && moveCount == count-1) { // 只有最后一张卡片的时候
         moveCount = 0;
         if ([self.delegate respondsToSelector:@selector(cardView:didRemoveLastCell:forRowAtIndex:)]) {
             [self.delegate cardView:self didRemoveLastCell:cell forRowAtIndex:self.currentIndex];
@@ -294,3 +295,4 @@ static int moveCount = 0;//!< 记录翻页次数
 //}
 
 @end
+

@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name         = "QiCardView"
-    s.version      = "0.1.11"
+    s.version      = "0.1.12"
     s.summary      = "Ben's QiCardView repo"
     s.homepage     = "https://github.com/arkilis/QiCardView"
     s.license      = { :type => "MIT", :file => "License" }
